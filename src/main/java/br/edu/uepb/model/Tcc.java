@@ -10,6 +10,17 @@ public class Tcc {
 	private Date andeDeDefesa;
 	private String local;
 	
+	public Tcc(String titulo, String autores, String orientadores, String tipo, Date andeDeDefesa, String local) {
+		super();
+		this.titulo = titulo;
+		this.autores = autores;
+		this.orientadores = orientadores;
+		this.tipo = tipo;
+		this.andeDeDefesa = andeDeDefesa;
+		this.local = local;
+	}
+	
+	
 	public String getTitulo() {
 		return titulo;
 	}

@@ -9,6 +9,16 @@ public class Revistas {
 	private int edicao;
 	private int nPaginas;
 	
+	
+	public Revistas(String titulo, String editora, Date anoDePublicacao, int edicao, int nPaginas) {
+		super();
+		this.titulo = titulo;
+		this.editora = editora;
+		this.anoDePublicacao = anoDePublicacao;
+		this.edicao = edicao;
+		this.nPaginas = nPaginas;
+	}
+	
 	public String getTitulo() {
 		return titulo;
 	}

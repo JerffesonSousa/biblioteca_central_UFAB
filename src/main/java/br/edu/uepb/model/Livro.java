@@ -13,6 +13,22 @@ public class Livro {
 	private String areaConhecimento;
 	private String subarea;
 	
+	
+	
+	public Livro(int iSBN, String titulo, String autores, String editora, Date anoDePpublicacao, int edicao,
+			int nPaginas, String areaConhecimento, String subarea) {
+		super();
+		ISBN = iSBN;
+		this.titulo = titulo;
+		this.autores = autores;
+		this.editora = editora;
+		this.anoDePpublicacao = anoDePpublicacao;
+		this.edicao = edicao;
+		this.nPaginas = nPaginas;
+		this.areaConhecimento = areaConhecimento;
+		this.subarea = subarea;
+	}
+	
 	public int getISBN() {
 		return ISBN;
 	}

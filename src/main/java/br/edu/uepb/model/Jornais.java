@@ -7,6 +7,13 @@ public class Jornais {
 	private Date data;
 	private String edicao;
 	
+	public Jornais(String titulo, Date data, String edicao) {
+		super();
+		this.titulo = titulo;
+		this.data = data;
+		this.edicao = edicao;
+	}
+	
 	public String getTitulo() {
 		return titulo;
 	}

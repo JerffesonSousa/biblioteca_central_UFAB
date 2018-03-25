@@ -10,6 +10,16 @@ public class Anais {
 	private Date anoDePublicao;
 	private String local;
 	
+	public Anais(String tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicao, String local) {
+		super();
+		this.tipo = tipo;
+		this.titulo = titulo;
+		this.autores = autores;
+		this.nomeCongresso = nomeCongresso;
+		this.anoDePublicao = anoDePublicao;
+		this.local = local;
+	}
+	
 	public String getTipo() {
 		return tipo;
 	}

@@ -7,6 +7,14 @@ public class MidiasEletronicas {
 	private String tipo;
 	private Date dataDaGravacao;
 	
+	
+	public MidiasEletronicas(String titulo, String tipo, Date dataDaGravacao) {
+		super();
+		this.titulo = titulo;
+		this.tipo = tipo;
+		this.dataDaGravacao = dataDaGravacao;
+	}
+	
 	public String getTitulo() {
 		return titulo;
 	}
@@ -25,6 +33,4 @@ public class MidiasEletronicas {
 	public void setDataDaGravacao(Date dataDaGravacao) {
 		this.dataDaGravacao = dataDaGravacao;
 	}
-	
-	
 }
