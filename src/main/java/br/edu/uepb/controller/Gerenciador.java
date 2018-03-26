@@ -22,23 +22,29 @@ public class Gerenciador {
 		this.tcc = new ArrayList<Tcc>();
 	}
 	
-	public void inserirAnais(String tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicacao, String local) {
+	public boolean inserirAnais(String tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicacao, String local) {
 		Anais _anais = new Anais(tipo, titulo, autores, nomeCongresso, anoDePublicacao, local);
-		anais.add(_anais);
+		return anais.add(_anais);
 	}
 	
-	public void removeAnais(Anais _anais) {
-		anais.remove(_anais);
+	public boolean removeAnais(String titulo) {
+		for(Anais a : anais) {
+			if(a.getTitulo().equals(titulo)) {
+				return anais.remove(a);
+			}
+		}
+		
+		return false;
 	}
 	
-	public void atualizaAnais(Anais _anais) {
+	public boolean atualizaAnais(Anais _anais) {
 		for(Anais a : anais) {
 			if(a.getTitulo().equals(_anais.getTitulo())) {
 				anais.remove(a);
-				break;
+				return anais.add(_anais);
 			}
 		}
-		anais.add(_anais);
+		return false;
 	}
 	
 	public void inserirJornal(String titulo, Date data, String edicao) {
