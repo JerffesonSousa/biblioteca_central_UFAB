@@ -2,13 +2,13 @@ package br.edu.uepb.model;
 
 import java.util.Date;
 
-public class MidiasEletronicas {
+public class MidiaEletronica {
 	private String titulo;
 	private String tipo;
 	private Date dataDaGravacao;
 	
 	
-	public MidiasEletronicas(String titulo, String tipo, Date dataDaGravacao) {
+	public MidiaEletronica(String titulo, String tipo, Date dataDaGravacao) {
 		super();
 		this.titulo = titulo;
 		this.tipo = tipo;

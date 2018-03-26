@@ -2,12 +2,12 @@ package br.edu.uepb.model;
 
 import java.util.Date;
 
-public class Jornais {
+public class Jornal {
 	private String titulo;
 	private Date data;
 	private String edicao;
 	
-	public Jornais(String titulo, Date data, String edicao) {
+	public Jornal(String titulo, Date data, String edicao) {
 		super();
 		this.titulo = titulo;
 		this.data = data;

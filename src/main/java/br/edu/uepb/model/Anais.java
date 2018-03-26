@@ -7,16 +7,16 @@ public class Anais {
 	private String titulo;
 	private String autores;
 	private String nomeCongresso;
-	private Date anoDePublicao;
+	private Date anoDePublicacao;
 	private String local;
 	
-	public Anais(String tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicao, String local) {
+	public Anais(String tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicacao, String local) {
 		super();
 		this.tipo = tipo;
 		this.titulo = titulo;
 		this.autores = autores;
 		this.nomeCongresso = nomeCongresso;
-		this.anoDePublicao = anoDePublicao;
+		this.anoDePublicacao = anoDePublicacao;
 		this.local = local;
 	}
 	
@@ -45,10 +45,10 @@ public class Anais {
 		this.nomeCongresso = nomeCongresso;
 	}
 	public Date getAnoDePublicao() {
-		return anoDePublicao;
+		return anoDePublicacao;
 	}
 	public void setAnoDePublicao(Date anoDePublicao) {
-		this.anoDePublicao = anoDePublicao;
+		this.anoDePublicacao = anoDePublicao;
 	}
 	public String getLocal() {
 		return local;

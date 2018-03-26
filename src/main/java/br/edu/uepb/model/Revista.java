@@ -2,7 +2,7 @@ package br.edu.uepb.model;
 
 import java.util.Date;
 
-public class Revistas {
+public class Revista {
 	private String titulo;
 	private String editora;
 	private Date anoDePublicacao;
@@ -10,7 +10,7 @@ public class Revistas {
 	private int nPaginas;
 	
 	
-	public Revistas(String titulo, String editora, Date anoDePublicacao, int edicao, int nPaginas) {
+	public Revista(String titulo, String editora, Date anoDePublicacao, int edicao, int nPaginas) {
 		super();
 		this.titulo = titulo;
 		this.editora = editora;
