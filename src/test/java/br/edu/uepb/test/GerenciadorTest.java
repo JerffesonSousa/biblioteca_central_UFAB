@@ -11,7 +11,7 @@ import org.junit.Test;
 import br.edu.uepb.controller.Gerenciador;
 import br.edu.uepb.model.*;
 
-public class BibliotecaTest {
+public class GerenciadorTest {
 	private Gerenciador ger;
 	private Calendar cal;
 	private Date date;
@@ -21,6 +21,7 @@ public class BibliotecaTest {
 	private MidiaEletronica _midia;
 	private Revista _revista;
 	private Tcc _tcc;
+	private Curso _curso;
 	
 	@Before
 	public void setUp() { 
@@ -37,6 +38,7 @@ public class BibliotecaTest {
 		_midia = new MidiaEletronica("Know", "CD", date);
 		_revista = new Revista("Veja", "Home",date, 3, 20);
 		_tcc = new Tcc("A coisa", "Só eu", "thiago", "tese", date, "School");
+		_curso = new Curso("Ciência da Computação", "exatas", "Graduação");
 	}
 	
 	
@@ -160,5 +162,25 @@ public class BibliotecaTest {
 		assertTrue(ger.atualizaTcc(_tcc));
 		ger.removeTcc("A coisa");
 		assertFalse(ger.atualizaTcc(_tcc));
+	}
+	
+	@Test
+	public void testInserirCurso() {
+		assertTrue(ger.inserirCurso("Ciência da Computação", "exatas", "Graduação"));
+	}
+	
+	@Test
+	public void testRemoverCurso() {
+		ger.inserirCurso("Ciência da Computação", "exatas", "Graduação");
+		assertTrue(ger.removeCurso("Ciência da Computação"));
+		assertFalse(ger.removeCurso("Mecânica"));
+	}
+	
+	@Test
+	public void testAtualizaCurso() {
+		ger.inserirCurso("Ciência da Computação", "exatas", "Graduação");
+		assertTrue(ger.atualizaCurso(_curso));
+		ger.removeCurso("Ciência da Computação");
+		assertFalse(ger.atualizaCurso(_curso));
 	}
 }

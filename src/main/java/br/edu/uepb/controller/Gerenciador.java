@@ -79,9 +79,9 @@ public class Gerenciador {
 		return false;
 	}
 	
-	public boolean inserirLivro(int iSBN, String titulo, String autores, String editora, Date anoDePpublicacao, int edicao,
+	public boolean inserirLivro(int iSBN, String titulo, String autores, String editora, Date anoDePublicacao, int edicao,
 			int nPaginas, String areaConhecimento, String subarea) {
-		Livro _livro = new Livro(iSBN,  titulo,  autores,  editora,  anoDePpublicacao, edicao,
+		Livro _livro = new Livro(iSBN,  titulo,  autores,  editora,  anoDePublicacao, edicao,
 				 nPaginas,  areaConhecimento,  subarea);
 		return livros.add(_livro);
 	}
