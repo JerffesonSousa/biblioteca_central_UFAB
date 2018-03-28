@@ -5,6 +5,11 @@ import java.util.Date;
 
 import br.edu.uepb.model.*;
 
+/**
+ * @author Jerffeson Sousa
+ *
+ * */
+
 public class Gerenciador {
 	private ArrayList<Anais> anais;
 	private ArrayList<Jornal> jornais;
@@ -12,6 +17,7 @@ public class Gerenciador {
 	private ArrayList<MidiaEletronica> midiasEletronicas;
 	private ArrayList<Revista> revistas;
 	private ArrayList<Tcc> tcc;
+	private ArrayList<Curso> cursos;
 	
 	public Gerenciador() {
 		this.anais = new ArrayList<Anais>();
@@ -20,7 +26,9 @@ public class Gerenciador {
 		this.midiasEletronicas = new ArrayList<MidiaEletronica>();
 		this.revistas = new ArrayList<Revista>();
 		this.tcc = new ArrayList<Tcc>();
+		this.cursos = new ArrayList<Curso>();
 	}
+	
 	
 	public boolean inserirAnais(String tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicacao, String local) {
 		Anais _anais = new Anais(tipo, titulo, autores, nomeCongresso, anoDePublicacao, local);
@@ -47,100 +55,149 @@ public class Gerenciador {
 		return false;
 	}
 	
-	public void inserirJornal(String titulo, Date data, String edicao) {
+	public boolean inserirJornal(String titulo, Date data, int edicao) {
 		Jornal _jornal = new Jornal(titulo, data, edicao);
-		jornais.add(_jornal);
+		return jornais.add(_jornal);
 	}
 	
-	public void removeJornal(Jornal _jornal) {
-		jornais.remove(_jornal);
+	public boolean removeJornal(String titulo) {
+		for(Jornal j : jornais) {
+			if(j.getTitulo().equals(titulo)) {
+				return jornais.remove(j);
+			}
+		}
+		return false;
 	}
 	
-	public void atualizaJornal(Jornal _jornal) {
+	public boolean atualizaJornal(Jornal _jornal) {
 		for(Jornal j : jornais) {
 			if(j.getTitulo().equals(_jornal.getTitulo())) {
 				jornais.remove(j);
-				break;
+				return jornais.add(_jornal);
 			}
 		}
-		jornais.add(_jornal);
+		return false;
 	}
 	
-	public void inserirLivro(int iSBN, String titulo, String autores, String editora, Date anoDePpublicacao, int edicao,
+	public boolean inserirLivro(int iSBN, String titulo, String autores, String editora, Date anoDePpublicacao, int edicao,
 			int nPaginas, String areaConhecimento, String subarea) {
 		Livro _livro = new Livro(iSBN,  titulo,  autores,  editora,  anoDePpublicacao, edicao,
 				 nPaginas,  areaConhecimento,  subarea);
-		livros.add(_livro);
+		return livros.add(_livro);
 	}
 	
-	public void removeLivro(Livro _livro) {
-		livros.remove(_livro);
+	public boolean removeLivro(String titulo) {
+		for(Livro l : livros) {
+			if(l.getTitulo().equals(titulo)) {
+				return livros.remove(l);
+			}
+		}
+		return false;
 	}
 	
-	public void atualizaLivro(Livro _livro) {
+	public boolean atualizaLivro(Livro _livro) {
 		for(Livro l : livros) {
 			if(l.getTitulo().equals(_livro.getTitulo())) {
 				livros.remove(l);
-				break;
+				return livros.add(_livro);
 			}
 		}
-		livros.add(_livro);
+		return false;
 	}
 	
-	public void inserirMidiaEletronica(String titulo, String tipo, Date dataDaGravacao) {
+	public boolean inserirMidiaEletronica(String titulo, String tipo, Date dataDaGravacao) {
 		MidiaEletronica _midia = new MidiaEletronica(titulo, tipo, dataDaGravacao);
-		midiasEletronicas.add(_midia);
+		return midiasEletronicas.add(_midia);
 	}
 	
-	public void removeMidiaEletronica(MidiaEletronica _midia) {
-		midiasEletronicas.remove(_midia);
+	public boolean removeMidiaEletronica(String titulo) {
+		for(MidiaEletronica m : midiasEletronicas) {
+			if(m.getTitulo().equals(titulo)) {
+				return midiasEletronicas.remove(m);
+			}
+		}
+		return false;
 	}
 	
-	public void atualizaMidiaEletronica(MidiaEletronica _midia) {
+	public boolean atualizaMidiaEletronica(MidiaEletronica _midia) {
 		for(MidiaEletronica m : midiasEletronicas) {
 			if(m.getTitulo().equals(_midia.getTitulo())) {
 				midiasEletronicas.remove(m);
-				break;
+				return midiasEletronicas.add(_midia);
 			}
 		}
-		midiasEletronicas.add(_midia);
+		return false;
 	}
 	
-	public void inserirRevista(String titulo, String editora, Date anoDePublicacao, int edicao, int nPaginas) {
+	public boolean inserirRevista(String titulo, String editora, Date anoDePublicacao, int edicao, int nPaginas) {
 		Revista _revista = new Revista(titulo, editora, anoDePublicacao, edicao, nPaginas);
-		revistas.add(_revista);
+		return revistas.add(_revista);
 	}
 	
-	public void removeRevista(Revista _revista) {
-		revistas.remove(_revista);
+	public boolean removeRevista(String titulo) {
+		for(Revista r : revistas) {
+			if(r.getTitulo().equals(titulo)) {
+				return revistas.remove(r);
+			}
+		}
+		return false;
 	}
 	
-	public void atualizaRevista(Revista _revista) {
+	public boolean atualizaRevista(Revista _revista) {
 		for(Revista r : revistas) {
 			if(r.getTitulo().equals(_revista.getTitulo())){
 				revistas.remove(r);
-				break;
+				return revistas.add(_revista);
 			}
 		}
-		revistas.add(_revista);
+		return false;
 	}
 	
-	public void inserirTcc(String titulo, String autores, String orientadores, String tipo, Date andeDeDefesa, String local) {
+	public boolean inserirTcc(String titulo, String autores, String orientadores, String tipo, Date andeDeDefesa, String local) {
 		Tcc _tcc = new Tcc(titulo, autores, orientadores, tipo, andeDeDefesa, local);
-		tcc.add(_tcc);
+		return tcc.add(_tcc);
 	}
 	
-	public void removeTcc(Tcc _tcc) {
-		tcc.remove(_tcc);
+	public boolean removeTcc(String titulo) {
+		for(Tcc t : tcc) {
+			if(t.getTitulo().equals(titulo)) {
+				return tcc.remove(t);
+			}
+		}
+		return false;
 	}
 	
-	public void atualizaTcc(Tcc _tcc) {
+	public boolean atualizaTcc(Tcc _tcc) {
 		for(Tcc t : tcc) {
 			if(t.getTitulo().equals(_tcc.getTitulo())) {
 				tcc.remove(t);
-				break;
+				return tcc.add(_tcc);
 			}
 		}
-		tcc.add(_tcc);
+		return false;
+	}
+	
+	public boolean inserirCurso(String nome, String area, String tipo) {
+		Curso c = new Curso(nome, area, tipo);
+		return cursos.add(c);
+	}
+	
+	public boolean removeCurso(String nome) {
+		for(Curso c : cursos) {
+			if(c.getNome().equals(nome)) {
+				return cursos.remove(c);
+			}
+		}
+		return false;
+	}
+	
+	public boolean atualizaCurso(Curso _curso) {
+		for(Curso c : cursos) {
+			if(c.getNome().equals(_curso.getNome())) {
+				cursos.remove(c);
+				return cursos.add(_curso);
+			}
+		}
+		return false;
 	}
 }

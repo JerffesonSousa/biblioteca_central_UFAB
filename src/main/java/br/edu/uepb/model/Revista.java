@@ -2,6 +2,11 @@ package br.edu.uepb.model;
 
 import java.util.Date;
 
+/**
+ * @author Jerffeson Sousa
+ *
+ * */
+
 public class Revista {
 	private String titulo;
 	private String editora;

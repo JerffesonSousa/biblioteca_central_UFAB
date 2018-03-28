@@ -2,6 +2,11 @@ package br.edu.uepb.model;
 
 import java.util.Date;
 
+/**
+ * @author Jerffeson Sousa
+ *
+ * */
+
 public class Anais {
 	private String tipo;
 	private String titulo;

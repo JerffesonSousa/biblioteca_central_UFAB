@@ -2,12 +2,17 @@ package br.edu.uepb.model;
 
 import java.util.Date;
 
+/**
+ * @author Jerffeson Sousa
+ *
+ * */
+
 public class Jornal {
 	private String titulo;
 	private Date data;
-	private String edicao;
+	private int edicao;
 	
-	public Jornal(String titulo, Date data, String edicao) {
+	public Jornal(String titulo, Date data, int edicao) {
 		super();
 		this.titulo = titulo;
 		this.data = data;
@@ -26,10 +31,10 @@ public class Jornal {
 	public void setData(Date data) {
 		this.data = data;
 	}
-	public String getEdicao() {
+	public int getEdicao() {
 		return edicao;
 	}
-	public void setEdicao(String edicao) {
+	public void setEdicao(int edicao) {
 		this.edicao = edicao;
 	}
 	
