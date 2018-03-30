@@ -8,6 +8,7 @@ public class Curso {
 	private String nome;
 	private String area;
 	private String tipo;
+
 	
 	public Curso(String nome, String area, String tipo) {
 		super();
