@@ -2,6 +2,7 @@ package br.edu.uepb.test;
 
 import static org.junit.Assert.*;
 
+import java.sql.Connection;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -22,6 +23,8 @@ public class GerenciadorTest {
 	private Revista _revista;
 	private Tcc _tcc;
 	private Curso _curso;
+	private CursoDAO _cursoDao;
+	private Conexao _conexao;
 	
 	@Before
 	public void setUp() { 
@@ -38,7 +41,9 @@ public class GerenciadorTest {
 		_midia = new MidiaEletronica("Know", "CD", date);
 		_revista = new Revista("Veja", "Home",date, 3, 20);
 		_tcc = new Tcc("A coisa", "Só eu", "thiago", "tese", date, "School");
-		_curso = new Curso("Ciência da Computação", "exatas", "Graduação");
+		_curso = new Curso("Ciência da Computação", "exatas", "pos-graduação");
+		_cursoDao = new CursoDAO();
+		_conexao = new Conexao();
 	}
 	
 	
@@ -182,5 +187,15 @@ public class GerenciadorTest {
 		assertTrue(ger.atualizaCurso(_curso));
 		ger.removeCurso("Ciência da Computação");
 		assertFalse(ger.atualizaCurso(_curso));
+	}
+	
+	@Test
+	public void testConexao() {
+		assertTrue(_conexao.getConexao() instanceof Connection);
+	}
+	
+	@Test
+	public void testInseriCurso() {
+		assertEquals(8, _cursoDao.inserir(_curso));
 	}
 }

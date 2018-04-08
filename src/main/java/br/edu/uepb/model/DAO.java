@@ -27,11 +27,11 @@ public abstract class DAO<T> {
 	
 	public abstract List<T> getLista();
 	
-	public abstract int inserir(T obj);
+	public abstract T inserir(T obj);
 	
-	public abstract void remover(T obj);
+	public abstract boolean remover(T obj);
 	
-	public abstract void remover(int id);
+	public abstract boolean remover(int id);
 	
-	public abstract void atualizar(T obj);
+	public abstract T atualizar(T obj);
 }
