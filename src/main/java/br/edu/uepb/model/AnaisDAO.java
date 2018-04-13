@@ -2,6 +2,7 @@ package br.edu.uepb.model;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,27 +57,35 @@ public class AnaisDAO extends DAO<Anais> {
 				listaAnais.add(anais);
 
 			}
+			
 			super.closeConnections();
+			return listaAnais;
 		} catch (SQLException e) {
 			throw new DAOException(e.getMessage());
 		}
-		return listaAnais;
+		
 	}
 
 	@Override
 	public Anais inserir(Anais obj) {
 		if (obj != null) {
 			super.connection = new Conexao().getConexao();
-			String sql = "INSERT INTO anais (tipo, titulo, autor, congresso, publicacao, local VALUES(?,?,?,?,?,?);";
+			String sql = "INSERT INTO anais VALUES (DEFAULT,?,?,?,?,?,?);";
+			Date dateSql = new java.sql.Date(obj.getAnoDePublicacao().getTime());
 			try {
-				super.statement = super.connection.prepareStatement(sql);
+				super.statement = super.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				super.statement.setString(1, obj.getTipo());
 				super.statement.setString(2, obj.getTitulo());
 				super.statement.setString(3, obj.getAutores());
 				super.statement.setString(4, obj.getNomeCongresso());
-				super.statement.setDate(5, (Date) obj.getAnoDePublicao());
+				super.statement.setDate(5, dateSql);
 				super.statement.setString(6, obj.getLocal());
-				super.statement.executeQuery();
+				super.statement.execute();
+				super.resultSet = super.statement.getGeneratedKeys();
+				
+				if(resultSet.next()) {
+					obj.setAnaisID(resultSet.getInt(1));
+				}
 
 				super.closeConnections();
 				return obj;
@@ -99,7 +108,7 @@ public class AnaisDAO extends DAO<Anais> {
 
 				super.closeConnections();
 				return true;
-			} catch (Exception e) {
+			} catch (SQLException e) {
 				throw new DAOException(e.getMessage());
 			}
 		}
@@ -127,17 +136,18 @@ public class AnaisDAO extends DAO<Anais> {
 	public Anais atualizar(Anais obj) {
 		if (obj != null) {
 			super.connection = new Conexao().getConexao();
-			String sql = "UPDATE cursos SET tipo=?, titulo=?, autor=?, congresso=?, publicacao=?, local=?, WHERE anaisID = ? LIMIT 1;";
-
+			String sql = "UPDATE anais SET tipo=?, titulo=?, autor=?, congresso=?, publicacao=?, local=? WHERE anaisID = ? LIMIT 1;";
+			Date dateSql = new java.sql.Date(obj.getAnoDePublicacao().getTime());
+			
 			try {
 				super.statement = super.connection.prepareStatement(sql);
 				super.statement.setString(1, obj.getTipo());
 				super.statement.setString(2, obj.getTitulo());
 				super.statement.setString(3, obj.getAutores());
 				super.statement.setString(4, obj.getNomeCongresso());
-				super.statement.setDate(5, (Date) obj.getAnoDePublicacao());
+				super.statement.setDate(5, dateSql);
 				super.statement.setString(6, obj.getLocal());
-				super.statement.setInt(6, obj.getAnaisID());
+				super.statement.setInt(7, obj.getAnaisID());
 
 				super.statement.execute();
 
