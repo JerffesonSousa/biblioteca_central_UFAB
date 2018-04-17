@@ -15,6 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import br.edu.uepb.model.Anais;
 import br.edu.uepb.dao.AnaisDAOImpl;
+import br.edu.uepb.enums.AnaisEnum;
 
 public class DAOTest extends TestCase {
 	private Calendar cal;
@@ -33,7 +34,7 @@ public class DAOTest extends TestCase {
 		context = new ClassPathXmlApplicationContext("spring.xml");
 		anaisDao= context.getBean(AnaisDAOImpl.class);
 		
-		_anais = new Anais("Artigo", "Primeiro", "José", "Home", date, "Room");
+		_anais = new Anais(AnaisEnum.ARTIGO, "Primeiro", "José", "Home", date, "Room");
 	}
 	
 	@Test

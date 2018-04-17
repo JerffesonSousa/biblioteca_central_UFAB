@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.edu.uepb.enums.CursoEnum;
+
 /**Classe para objetos do tipo Curso
  * @author Jerffeson Sousa
  * */
@@ -19,7 +21,7 @@ public class Curso {
 	private int cursoID;
 	private String nome;
 	private String area;
-	private String tipo;
+	private CursoEnum tipo;
 	
 	public Curso() {}
 	
@@ -28,7 +30,7 @@ public class Curso {
 	 * @param area uma string para indicar a area do curso
 	 * @param tipo uma string para indicar o tipo do curso(pós-graduação ou graduação)
 	 * */
-	public Curso(String nome, String area, String tipo) {
+	public Curso(String nome, String area, CursoEnum tipo) {
 		super();
 		this.nome = nome;
 		this.area = area;
@@ -41,7 +43,7 @@ public class Curso {
 	 * @param area uma string para indicar a area do curso
 	 * @param tipo uma string para indicar o tipo do curso(pós-graduação ou graduação)
 	 * */
-	public Curso(int cursoID, String nome, String area, String tipo) {
+	public Curso(int cursoID, String nome, String area, CursoEnum tipo) {
 		super();
 		this.cursoID = cursoID;
 		this.nome = nome;
@@ -73,11 +75,11 @@ public class Curso {
 		this.area = area;
 	}
 
-	public String getTipo() {
+	public CursoEnum getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(CursoEnum tipo) {
 		this.tipo = tipo;
 	}
 

@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.edu.uepb.enums.TccEnum;
+
 @Entity
 @Table(name="tcc")
 public class Tcc {
@@ -19,13 +21,13 @@ public class Tcc {
 	private String titulo;
 	private String autor;
 	private String orientador;
-	private String tipo;
+	private TccEnum tipo;
 	private Date dataDefesa;
 	private String local;
 	
 	public Tcc() {}
 	
-	public Tcc(int tccID, String titulo, String autor, String orientador, String tipo, Date dataDefesa, String local) {
+	public Tcc(int tccID, String titulo, String autor, String orientador, TccEnum tipo, Date dataDefesa, String local) {
 		super();
 		this.tccID = tccID;
 		this.titulo = titulo;
@@ -35,7 +37,7 @@ public class Tcc {
 		this.dataDefesa = dataDefesa;
 		this.local = local;
 	}
-	public Tcc(String titulo, String autor, String orientador, String tipo, Date dataDefesa, String local) {
+	public Tcc(String titulo, String autor, String orientador, TccEnum tipo, Date dataDefesa, String local) {
 		super();
 		this.titulo = titulo;
 		this.autor = autor;
@@ -77,11 +79,11 @@ public class Tcc {
 		this.orientador = orientador;
 	}
 
-	public String getTipo() {
+	public TccEnum getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(TccEnum tipo) {
 		this.tipo = tipo;
 	}
 

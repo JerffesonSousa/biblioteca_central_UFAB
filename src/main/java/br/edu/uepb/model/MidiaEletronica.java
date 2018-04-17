@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.edu.uepb.enums.MidiaEletronicaEnum;
+
 /**
  * @author Jerffeson Sousa
  * */
@@ -21,13 +23,13 @@ public class MidiaEletronica {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int midiaID;
 	private String titulo;
-	private String tipo;
+	private MidiaEletronicaEnum tipo;
 	private Date dataGravacao;
 
 	public MidiaEletronica() {
 	}
 
-	public MidiaEletronica(int midiaID, String titulo, String tipo, Date dataGravacao) {
+	public MidiaEletronica(int midiaID, String titulo, MidiaEletronicaEnum tipo, Date dataGravacao) {
 		super();
 		this.midiaID = midiaID;
 		this.titulo = titulo;
@@ -35,7 +37,7 @@ public class MidiaEletronica {
 		this.dataGravacao = dataGravacao;
 	}
 
-	public MidiaEletronica(String titulo, String tipo, Date dataGravacao) {
+	public MidiaEletronica(String titulo, MidiaEletronicaEnum tipo, Date dataGravacao) {
 		super();
 		this.titulo = titulo;
 		this.tipo = tipo;
@@ -58,11 +60,11 @@ public class MidiaEletronica {
 		this.titulo = titulo;
 	}
 
-	public String getTipo() {
+	public MidiaEletronicaEnum getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(MidiaEletronicaEnum tipo) {
 		this.tipo = tipo;
 	}
 

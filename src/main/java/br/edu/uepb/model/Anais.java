@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.edu.uepb.enums.AnaisEnum;
+
 /**Classe para objetos do tipo Anais
  * @author Jerffeson Sousa
  *
@@ -20,7 +22,7 @@ public class Anais {
 	@Column(name="anaisID")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int anaisID;
-	private String tipo;
+	private AnaisEnum tipo;
 	private String titulo;
 	private String autores;
 	private String congresso;
@@ -37,7 +39,7 @@ public class Anais {
 	 * @param anaDePublicacao um objeto tipo Date que indica o ano da publicação dos Anais
 	 * @param local uma string para identificar o local que foi realizado
 	 * */
-	public Anais(String tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicacao, String local) {
+	public Anais(AnaisEnum tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicacao, String local) {
 		super();
 		this.tipo = tipo;
 		this.titulo = titulo;
@@ -56,7 +58,7 @@ public class Anais {
 	 * @param anaDePublicacao um objeto tipo Date que indica o ano da publicação dos Anais
 	 * @param local uma string para identificar o local que foi realizado
 	 * */
-	public Anais(int anaisID, String tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicacao, String local) {
+	public Anais(int anaisID, AnaisEnum tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicacao, String local) {
 		super();
 		this.anaisID = anaisID;
 		this.tipo = tipo;
@@ -83,11 +85,11 @@ public class Anais {
 		this.anoDePublicacao = anoDePublicacao;
 	}
 
-	public String getTipo() {
+	public AnaisEnum getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(AnaisEnum tipo) {
 		this.tipo = tipo;
 	}
 
