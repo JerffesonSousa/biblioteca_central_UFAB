@@ -1,17 +1,33 @@
 package br.edu.uepb.model;
 
-/**
- * @author Jerffeson Sousa
- */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+/**Classe para objetos do tipo Curso
+ * @author Jerffeson Sousa
+ * */
+@Entity
+@Table(name="cursos")
 public class Curso {
+	@Id
+	@Column
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int cursoID;
 	private String nome;
 	private String area;
 	private String tipo;
 	
 	public Curso() {}
-
+	
+	/**Construtor Curso
+	 * @param nome uma string para indicar o nome do curso
+	 * @param area uma string para indicar a area do curso
+	 * @param tipo uma string para indicar o tipo do curso(pós-graduação ou graduação)
+	 * */
 	public Curso(String nome, String area, String tipo) {
 		super();
 		this.nome = nome;
@@ -19,6 +35,12 @@ public class Curso {
 		this.tipo = tipo;
 	}
 	
+	/**Construtor Curso
+	 * @param cursoID um int para indicar seu id no banco
+	 * @param nome uma string para indicar o nome do curso
+	 * @param area uma string para indicar a area do curso
+	 * @param tipo uma string para indicar o tipo do curso(pós-graduação ou graduação)
+	 * */
 	public Curso(int cursoID, String nome, String area, String tipo) {
 		super();
 		this.cursoID = cursoID;
@@ -58,5 +80,6 @@ public class Curso {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
 
 }

@@ -2,47 +2,52 @@ package br.edu.uepb.model;
 
 import java.util.Date;
 
-/**
- * @author Jerffeson Sousa
- *
- */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="revistas")
 public class Revista {
+	@Id
+	@Column
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int revistaID;
 	private String titulo;
 	private String editora;
-	private Date anoDePublicacao;
+	private Date dataPublicacao;
 	private String edicao;
-	private int nPaginas;
+	private int paginas;
 	
 	public Revista() {}
 	
-
-	public Revista(String titulo, String editora, Date anoDePublicacao, String edicao, int nPaginas) {
-		super();
-		this.titulo = titulo;
-		this.editora = editora;
-		this.anoDePublicacao = anoDePublicacao;
-		this.edicao = edicao;
-		this.nPaginas = nPaginas;
-	}
-	
-	public Revista(int revistaID, String titulo, String editora, Date anoDePublicacao, String edicao, int nPaginas) {
+	public Revista(int revistaID, String titulo, String editora, Date dataPublicacao, String edicao, int paginas) {
 		super();
 		this.revistaID = revistaID;
 		this.titulo = titulo;
 		this.editora = editora;
-		this.anoDePublicacao = anoDePublicacao;
+		this.dataPublicacao = dataPublicacao;
 		this.edicao = edicao;
-		this.nPaginas = nPaginas;
+		this.paginas = paginas;
+	}
+	public Revista(String titulo, String editora, Date dataPublicacao, String edicao, int paginas) {
+		super();
+		this.titulo = titulo;
+		this.editora = editora;
+		this.dataPublicacao = dataPublicacao;
+		this.edicao = edicao;
+		this.paginas = paginas;
 	}
 
-	public int getRevistID() {
+	public int getRevistaID() {
 		return revistaID;
 	}
 
-	public void setRevistID(int revistID) {
-		this.revistaID = revistID;
+	public void setRevistaID(int revistaID) {
+		this.revistaID = revistaID;
 	}
 
 	public String getTitulo() {
@@ -61,12 +66,12 @@ public class Revista {
 		this.editora = editora;
 	}
 
-	public Date getAnoDePublicacao() {
-		return anoDePublicacao;
+	public Date getDataPublicacao() {
+		return dataPublicacao;
 	}
 
-	public void setAnoDePublicacao(Date anoDePublicacao) {
-		this.anoDePublicacao = anoDePublicacao;
+	public void setDataPublicacao(Date dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
 	}
 
 	public String getEdicao() {
@@ -77,12 +82,14 @@ public class Revista {
 		this.edicao = edicao;
 	}
 
-	public int getnPaginas() {
-		return nPaginas;
+	public int getPaginas() {
+		return paginas;
 	}
 
-	public void setnPaginas(int nPaginas) {
-		this.nPaginas = nPaginas;
+	public void setPaginas(int paginas) {
+		this.paginas = paginas;
 	}
+	
+	
 
 }

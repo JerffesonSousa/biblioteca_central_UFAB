@@ -2,43 +2,71 @@ package br.edu.uepb.model;
 
 import java.util.Date;
 
-/**
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/**Classe para objetos do tipo Anais
  * @author Jerffeson Sousa
  *
  */
-
+@Entity
+@Table(name="anais")
 public class Anais {
+	@Id
+	@Column(name="anaisID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int anaisID;
 	private String tipo;
 	private String titulo;
 	private String autores;
-	private String nomeCongresso;
+	private String congresso;
 	private Date anoDePublicacao;
 	private String local;
 	
 	public Anais () {}
-
+	
+	/**Contrutor Anais
+	 * @param tipo uma string para idicar o tipo (artigo, pôster ou resumo)
+	 * @param titulo uma string para indicar o título
+	 * @param autores uma string para indicar um ou mais autores
+	 * @param nomeCongresso uma string para indicar o nome do congresso
+	 * @param anaDePublicacao um objeto tipo Date que indica o ano da publicação dos Anais
+	 * @param local uma string para identificar o local que foi realizado
+	 * */
 	public Anais(String tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicacao, String local) {
 		super();
 		this.tipo = tipo;
 		this.titulo = titulo;
 		this.autores = autores;
-		this.nomeCongresso = nomeCongresso;
+		this.congresso = nomeCongresso;
 		this.anoDePublicacao = anoDePublicacao;
 		this.local = local;
 	}
 	
+	/**Contrutor Anais
+	 * @param anaisID um int para indicar seu Id no banco
+	 * @param tipo uma string (deve ser um artigo, pôster ou resumo)
+	 * @param titulo uma string para indicar o título
+	 * @param autores uma string para indicar um ou mais autores
+	 * @param nomeCongresso uma string para indicar o nome do congresso
+	 * @param anaDePublicacao um objeto tipo Date que indica o ano da publicação dos Anais
+	 * @param local uma string para identificar o local que foi realizado
+	 * */
 	public Anais(int anaisID, String tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicacao, String local) {
 		super();
 		this.anaisID = anaisID;
 		this.tipo = tipo;
 		this.titulo = titulo;
 		this.autores = autores;
-		this.nomeCongresso = nomeCongresso;
+		this.congresso = nomeCongresso;
 		this.anoDePublicacao = anoDePublicacao;
 		this.local = local;
 	}
-
+	
 	public int getAnaisID() {
 		return anaisID;
 	}
@@ -80,11 +108,11 @@ public class Anais {
 	}
 
 	public String getNomeCongresso() {
-		return nomeCongresso;
+		return congresso;
 	}
 
 	public void setNomeCongresso(String nomeCongresso) {
-		this.nomeCongresso = nomeCongresso;
+		this.congresso = nomeCongresso;
 	}
 
 	public Date getAnoDePublicao() {

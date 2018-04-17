@@ -2,31 +2,52 @@ package br.edu.uepb.model;
 
 import java.util.Date;
 
-/**
- * @author Jerffeson Sousa
- *
- */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+/**Classe para objetos do tipo Jornal
+ * @author Jerffeson Sousa
+ * */
+@Entity
+@Table(name="jornais")
 public class Jornal {
+	@Id
+	@Column
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int jornalID;
 	private String titulo;
-	private Date data;
+	private Date dataPublicacao;
 	private String edicao;
 	
 	public Jornal() {}
 
-	public Jornal(String titulo, Date data, String edicao) {
+	/**Contrutor Jornal
+	 * @param titulo uma string para idicar o título
+	 * @param dataPublicacao um objeto do tipo Date para idicar a data da publicação
+	 * @param edicao uma string para idicar a edição
+	 * */
+	public Jornal(String titulo, Date dataPublicacao, String edicao) {
 		super();
 		this.titulo = titulo;
-		this.data = data;
+		this.dataPublicacao = dataPublicacao;
 		this.edicao = edicao;
 	}
 	
-	public Jornal(int jornalID, String titulo, Date data, String edicao) {
+	/**Contrutor Jornal
+	 * @param jornalID um int para indicar id do banco
+	 * @param titulo uma string para idicar o título
+	 * @param dataPublicacao um objeto do tipo Date para idicar a data da publicação
+	 * @param edicao uma string para idicar a edição
+	 * */
+	public Jornal(int jornalID, String titulo, Date dataPublicacao, String edicao) {
 		super();
 		this.jornalID = jornalID;
 		this.titulo = titulo;
-		this.data = data;
+		this.dataPublicacao = dataPublicacao;
 		this.edicao = edicao;
 	}
 
@@ -46,12 +67,12 @@ public class Jornal {
 		this.titulo = titulo;
 	}
 
-	public Date getData() {
-		return data;
+	public Date getDataPublicacao() {
+		return dataPublicacao;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setDataPublicacao(Date dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
 	}
 
 	public String getEdicao() {
@@ -61,5 +82,8 @@ public class Jornal {
 	public void setEdicao(String edicao) {
 		this.edicao = edicao;
 	}
+	
+	
+	
 
 }

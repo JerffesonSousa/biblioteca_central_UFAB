@@ -2,40 +2,46 @@ package br.edu.uepb.model;
 
 import java.util.Date;
 
-/**
- * @author Jerffeson Sousa
- *
- */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="tcc")
 public class Tcc {
+	@Id
+	@Column
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int tccID;
 	private String titulo;
-	private String autores;
-	private String orientadores;
+	private String autor;
+	private String orientador;
 	private String tipo;
-	private Date anodeDeDefesa;
+	private Date dataDefesa;
 	private String local;
 	
-	public Tcc () {}
-
-	public Tcc(String titulo, String autores, String orientadores, String tipo, Date andeDeDefesa, String local) {
-		super();
-		this.titulo = titulo;
-		this.autores = autores;
-		this.orientadores = orientadores;
-		this.tipo = tipo;
-		this.anodeDeDefesa = andeDeDefesa;
-		this.local = local;
-	}
+	public Tcc() {}
 	
-	public Tcc(int tccID, String titulo, String autores, String orientadores, String tipo, Date anodeDeDefesa, String local) {
+	public Tcc(int tccID, String titulo, String autor, String orientador, String tipo, Date dataDefesa, String local) {
 		super();
 		this.tccID = tccID;
 		this.titulo = titulo;
-		this.autores = autores;
-		this.orientadores = orientadores;
+		this.autor = autor;
+		this.orientador = orientador;
 		this.tipo = tipo;
-		this.anodeDeDefesa = anodeDeDefesa;
+		this.dataDefesa = dataDefesa;
+		this.local = local;
+	}
+	public Tcc(String titulo, String autor, String orientador, String tipo, Date dataDefesa, String local) {
+		super();
+		this.titulo = titulo;
+		this.autor = autor;
+		this.orientador = orientador;
+		this.tipo = tipo;
+		this.dataDefesa = dataDefesa;
 		this.local = local;
 	}
 
@@ -55,20 +61,20 @@ public class Tcc {
 		this.titulo = titulo;
 	}
 
-	public String getAutores() {
-		return autores;
+	public String getAutor() {
+		return autor;
 	}
 
-	public void setAutores(String autores) {
-		this.autores = autores;
+	public void setAutor(String autor) {
+		this.autor = autor;
 	}
 
-	public String getOrientadores() {
-		return orientadores;
+	public String getOrientador() {
+		return orientador;
 	}
 
-	public void setOrientadores(String orientadores) {
-		this.orientadores = orientadores;
+	public void setOrientador(String orientador) {
+		this.orientador = orientador;
 	}
 
 	public String getTipo() {
@@ -79,12 +85,12 @@ public class Tcc {
 		this.tipo = tipo;
 	}
 
-	public Date getAnodeDeDefesa() {
-		return anodeDeDefesa;
+	public Date getDataDefesa() {
+		return dataDefesa;
 	}
 
-	public void setAnodeDeDefesa(Date andeDeDefesa) {
-		this.anodeDeDefesa = andeDeDefesa;
+	public void setDataDefesa(Date dataDefesa) {
+		this.dataDefesa = dataDefesa;
 	}
 
 	public String getLocal() {
@@ -94,5 +100,7 @@ public class Tcc {
 	public void setLocal(String local) {
 		this.local = local;
 	}
+	
+	
 
 }

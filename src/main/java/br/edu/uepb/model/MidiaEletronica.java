@@ -2,32 +2,44 @@ package br.edu.uepb.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author Jerffeson Sousa
- *
- */
+ * */
 
+@Entity
+@Table(name = "midiaseletronicas")
 public class MidiaEletronica {
+	@Id
+	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int midiaID;
 	private String titulo;
 	private String tipo;
-	private Date dataDaGravacao;
-	
-	public MidiaEletronica() {}
+	private Date dataGravacao;
 
-	public MidiaEletronica(String titulo, String tipo, Date dataDaGravacao) {
-		super();
-		this.titulo = titulo;
-		this.tipo = tipo;
-		this.dataDaGravacao = dataDaGravacao;
+	public MidiaEletronica() {
 	}
-	
-	public MidiaEletronica(int midiaID, String titulo, String tipo, Date dataDaGravacao) {
+
+	public MidiaEletronica(int midiaID, String titulo, String tipo, Date dataGravacao) {
 		super();
 		this.midiaID = midiaID;
 		this.titulo = titulo;
 		this.tipo = tipo;
-		this.dataDaGravacao = dataDaGravacao;
+		this.dataGravacao = dataGravacao;
+	}
+
+	public MidiaEletronica(String titulo, String tipo, Date dataGravacao) {
+		super();
+		this.titulo = titulo;
+		this.tipo = tipo;
+		this.dataGravacao = dataGravacao;
 	}
 
 	public int getMidiaID() {
@@ -54,11 +66,14 @@ public class MidiaEletronica {
 		this.tipo = tipo;
 	}
 
-	public Date getDataDaGravacao() {
-		return dataDaGravacao;
+	public Date getDataGravacao() {
+		return dataGravacao;
 	}
 
-	public void setDataDaGravacao(Date dataDaGravacao) {
-		this.dataDaGravacao = dataDaGravacao;
+	public void setDataGravacao(Date dataGravacao) {
+		this.dataGravacao = dataGravacao;
 	}
+	
+	
+
 }

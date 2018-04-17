@@ -2,85 +2,75 @@ package br.edu.uepb.model;
 
 import java.util.Date;
 
-/**
- * @author Jerffeson Sousa
- *
- */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "livros")
 public class Livro {
-	private int livroID;
-	private int ISBN;
+	@Id
+	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int livroId;
+	private int isbn;
 	private String titulo;
 	private String autores;
 	private String editora;
-	private Date anoDePublicacao;
+	private Date dataPublicacao;
 	private String edicao;
-	private int nPaginas;
-	private String areaConhecimento;
+	private int paginas;
+	private String area;
 	private String subArea;
 	
 	public Livro() {}
 
-	public Livro(int iSBN, String titulo, String autores, String editora, Date anoDePublicacao, String edicao,
-			int nPaginas, String areaConhecimento, String subarea) {
+	public Livro(int livroId, int isbn, String titulo, String autores, String editora, Date dataPublicacao,
+			String edicao, int paginas, String area, String subArea) {
 		super();
-		this.ISBN = iSBN;
+		this.livroId = livroId;
+		this.isbn = isbn;
 		this.titulo = titulo;
 		this.autores = autores;
 		this.editora = editora;
-		this.anoDePublicacao = anoDePublicacao;
+		this.dataPublicacao = dataPublicacao;
 		this.edicao = edicao;
-		this.nPaginas = nPaginas;
-		this.areaConhecimento = areaConhecimento;
-		this.subArea = subarea;
-	}
-	
-	public Livro(int livroID, int iSBN, String titulo, String autores, String editora, Date anoDePublicacao, String edicao,
-			int nPaginas, String areaConhecimento, String subarea) {
-		super();
-		this.livroID = livroID;
-		this.ISBN = iSBN;
-		this.titulo = titulo;
-		this.autores = autores;
-		this.editora = editora;
-		this.anoDePublicacao = anoDePublicacao;
-		this.edicao = edicao;
-		this.nPaginas = nPaginas;
-		this.areaConhecimento = areaConhecimento;
-		this.subArea = subarea;
-	}
-
-
-	public int getLivroID() {
-		return livroID;
-	}
-
-	public void setLivroID(int livroID) {
-		this.livroID = livroID;
-	}
-
-	public Date getAnoDePublicacao() {
-		return anoDePublicacao;
-	}
-
-	public void setAnoDePublicacao(Date anoDePublicacao) {
-		this.anoDePublicacao = anoDePublicacao;
-	}
-
-	public String getSubArea() {
-		return subArea;
-	}
-
-	public void setSubArea(String subArea) {
+		this.paginas = paginas;
+		this.area = area;
 		this.subArea = subArea;
 	}
 
-	public int getISBN() {
-		return ISBN;
+	public Livro(int isbn, String titulo, String autores, String editora, Date dataPublicacao, String edicao,
+			int paginas, String area, String subArea) {
+		super();
+		this.isbn = isbn;
+		this.titulo = titulo;
+		this.autores = autores;
+		this.editora = editora;
+		this.dataPublicacao = dataPublicacao;
+		this.edicao = edicao;
+		this.paginas = paginas;
+		this.area = area;
+		this.subArea = subArea;
 	}
 
-	public void setISBN(int iSBN) {
-		ISBN = iSBN;
+	public int getLivroId() {
+		return livroId;
+	}
+
+	public void setLivroId(int livroId) {
+		this.livroId = livroId;
+	}
+
+	public int getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(int isbn) {
+		this.isbn = isbn;
 	}
 
 	public String getTitulo() {
@@ -107,12 +97,12 @@ public class Livro {
 		this.editora = editora;
 	}
 
-	public Date getAnoDePpublicacao() {
-		return anoDePublicacao;
+	public Date getDataPublicacao() {
+		return dataPublicacao;
 	}
 
-	public void setAnoDePpublicacao(Date anoDePpublicacao) {
-		this.anoDePublicacao = anoDePpublicacao;
+	public void setDataPublicacao(Date dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
 	}
 
 	public String getEdicao() {
@@ -123,28 +113,30 @@ public class Livro {
 		this.edicao = edicao;
 	}
 
-	public int getnPaginas() {
-		return nPaginas;
+	public int getPaginas() {
+		return paginas;
 	}
 
-	public void setnPaginas(int nPaginas) {
-		this.nPaginas = nPaginas;
+	public void setPaginas(int paginas) {
+		this.paginas = paginas;
 	}
 
-	public String getAreaConhecimento() {
-		return areaConhecimento;
+	public String getArea() {
+		return area;
 	}
 
-	public void setAreaConhecimento(String areaConhecimento) {
-		this.areaConhecimento = areaConhecimento;
+	public void setArea(String area) {
+		this.area = area;
 	}
 
-	public String getSubarea() {
+	public String getSubArea() {
 		return subArea;
 	}
 
-	public void setSubarea(String subarea) {
-		this.subArea = subarea;
+	public void setSubArea(String subArea) {
+		this.subArea = subArea;
 	}
+	
+	
 
 }
