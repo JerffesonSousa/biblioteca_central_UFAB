@@ -10,6 +10,7 @@ import br.edu.uepb.exceptions.DAOException;
 import br.edu.uepb.model.Anais;
 
 public class AnaisDAOImpl implements DAO<Anais> {
+	
 	private SessionFactory sessionFactory;
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
