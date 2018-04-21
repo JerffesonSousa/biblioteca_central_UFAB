@@ -17,10 +17,16 @@ import javax.persistence.Table;
 public class Jornal {
 	@Id
 	@Column
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue
 	private int jornalID;
+	
+	@Column(name="TITULO")
 	private String titulo;
+	
+	@Column(name="DATAPUBLICACAO")
 	private Date dataPublicacao;
+	
+	@Column(name="EDICAO")
 	private String edicao;
 	
 	public Jornal() {}

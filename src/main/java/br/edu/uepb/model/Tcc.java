@@ -11,6 +11,11 @@ import javax.persistence.Table;
 
 import br.edu.uepb.enums.TccEnum;
 
+/**
+ * Classe para objetos do tipo Tcc
+ * @author Jerffeson Sousa
+ *
+ */
 @Entity
 @Table(name="tcc")
 public class Tcc {
@@ -27,6 +32,16 @@ public class Tcc {
 	
 	public Tcc() {}
 	
+	/**
+	 * Construtor Tcc
+	 * @param tccID um int para indicar id no banco
+	 * @param titulo uma String para indicar o título
+	 * @param autor uma String para indicar um ou mais autores
+	 * @param orientador uma String para indicar o orientador
+	 * @param tipo um enum para indicar o tipo(MONOGRAFIA, TESE, DISSERTAÂO)
+	 * @param dataDefesa
+	 * @param local
+	 */
 	public Tcc(int tccID, String titulo, String autor, String orientador, TccEnum tipo, Date dataDefesa, String local) {
 		super();
 		this.tccID = tccID;
@@ -37,6 +52,16 @@ public class Tcc {
 		this.dataDefesa = dataDefesa;
 		this.local = local;
 	}
+	
+	/**
+	 * Construtor Tcc
+	 * @param titulo uma String para indicar o título
+	 * @param autor uma String para indicar um ou mais autores
+	 * @param orientador uma String para indicar o orientador
+	 * @param tipo um enum para indicar o tipo(MONOGRAFIA, TESE, DISSERTAÂO)
+	 * @param dataDefesa
+	 * @param local
+	 */
 	public Tcc(String titulo, String autor, String orientador, TccEnum tipo, Date dataDefesa, String local) {
 		super();
 		this.titulo = titulo;

@@ -19,20 +19,32 @@ import br.edu.uepb.enums.AnaisEnum;
 @Table(name="anais")
 public class Anais {
 	@Id
-	@Column(name="anaisID")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ANAISID")
+	@GeneratedValue
 	private int anaisID;
+	
+	@Column(name="TIPO")
 	private AnaisEnum tipo;
+	
+	@Column(name="TITULO")
 	private String titulo;
+	
+	@Column(name="AUTORES")
 	private String autores;
+	
+	@Column(name="CONGRESSO")
 	private String congresso;
+	
+	@Column(name="ANODEPUBLICACAO")
 	private Date anoDePublicacao;
+	
+	@Column(name="LOCAL")
 	private String local;
 	
 	public Anais () {}
 	
 	/**Contrutor Anais
-	 * @param tipo uma string para idicar o tipo (artigo, pôster ou resumo)
+	 * @param tipo enum para idicar o tipo (ARTIGO, PÔSTER ou RESUMO)
 	 * @param titulo uma string para indicar o título
 	 * @param autores uma string para indicar um ou mais autores
 	 * @param nomeCongresso uma string para indicar o nome do congresso
@@ -51,7 +63,7 @@ public class Anais {
 	
 	/**Contrutor Anais
 	 * @param anaisID um int para indicar seu Id no banco
-	 * @param tipo uma string (deve ser um artigo, pôster ou resumo)
+	 * @param tipo enum para idicar o tipo (ARTIGO, PÔSTER ou RESUMO)
 	 * @param titulo uma string para indicar o título
 	 * @param autores uma string para indicar um ou mais autores
 	 * @param nomeCongresso uma string para indicar o nome do congresso

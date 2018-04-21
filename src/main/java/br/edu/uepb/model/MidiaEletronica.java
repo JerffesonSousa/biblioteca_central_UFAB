@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import br.edu.uepb.enums.MidiaEletronicaEnum;
 
 /**
+ * Classe para objetos do tipo MidiaEletronica
  * @author Jerffeson Sousa
  * */
 
@@ -20,15 +21,28 @@ import br.edu.uepb.enums.MidiaEletronicaEnum;
 public class MidiaEletronica {
 	@Id
 	@Column
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private int midiaID;
+	
+	@Column(name="TITULO")
 	private String titulo;
+	
+	@Column(name="TIPO")
 	private MidiaEletronicaEnum tipo;
+	
+	@Column(name="DATAGRAVACAO")
 	private Date dataGravacao;
 
 	public MidiaEletronica() {
 	}
-
+	
+	/**
+	 * Construtor MidiaEletronica
+	 * @param midiaID um int para indicar id no banco
+	 * @param titulo uma String para indicar o título
+	 * @param enum para indicar o tipo(CD, DVD)
+	 * @param dataGravacao um objeto do tipo Date para indicar data da gravação
+	 */
 	public MidiaEletronica(int midiaID, String titulo, MidiaEletronicaEnum tipo, Date dataGravacao) {
 		super();
 		this.midiaID = midiaID;
@@ -36,7 +50,13 @@ public class MidiaEletronica {
 		this.tipo = tipo;
 		this.dataGravacao = dataGravacao;
 	}
-
+	
+	/**
+	 * Construtor MidiaEletronica
+	 * @param titulo uma String para indicar o título
+	 * @param tipo enum para indicar o tipo(CD, DVD)
+	 * @param dataGravacao um objeto do tipo Date para indicar data da gravação
+	 */
 	public MidiaEletronica(String titulo, MidiaEletronicaEnum tipo, Date dataGravacao) {
 		super();
 		this.titulo = titulo;

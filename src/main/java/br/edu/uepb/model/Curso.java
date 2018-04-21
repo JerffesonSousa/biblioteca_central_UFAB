@@ -16,11 +16,17 @@ import br.edu.uepb.enums.CursoEnum;
 @Table(name="cursos")
 public class Curso {
 	@Id
-	@Column
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="CURSOID")
+	@GeneratedValue
 	private int cursoID;
+	
+	@Column(name="NOME")
 	private String nome;
+	
+	@Column(name="AREA")
 	private String area;
+	
+	@Column(name="TIPO")
 	private CursoEnum tipo;
 	
 	public Curso() {}
@@ -28,7 +34,7 @@ public class Curso {
 	/**Construtor Curso
 	 * @param nome uma string para indicar o nome do curso
 	 * @param area uma string para indicar a area do curso
-	 * @param tipo uma string para indicar o tipo do curso(pós-graduação ou graduação)
+	 * @param tipo enum para indicar o tipo do curso(PÓS-GRADUÇÃO, GRADUÇÃO)
 	 * */
 	public Curso(String nome, String area, CursoEnum tipo) {
 		super();
@@ -41,7 +47,7 @@ public class Curso {
 	 * @param cursoID um int para indicar seu id no banco
 	 * @param nome uma string para indicar o nome do curso
 	 * @param area uma string para indicar a area do curso
-	 * @param tipo uma string para indicar o tipo do curso(pós-graduação ou graduação)
+	 * @param tipo enum para indicar o tipo do curso(PÓS-GRADUÇÃO, GRADUÇÃO)
 	 * */
 	public Curso(int cursoID, String nome, String area, CursoEnum tipo) {
 		super();
