@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.uepb.model.Jornal;
-import br.edu.uepb.services.DAOServices;
+import br.edu.uepb.services.Services;
 
 @Controller
 public class JornalController {
 	
 	@Autowired
-	private DAOServices<Jornal> jornalServices;
+	private Services<Jornal> jornalServices;
 	
 	@RequestMapping("/jornal")
 	public ModelAndView jornal(Jornal j) {

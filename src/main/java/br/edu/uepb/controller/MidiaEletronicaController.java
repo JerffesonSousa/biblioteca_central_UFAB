@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.uepb.model.MidiaEletronica;
-import br.edu.uepb.services.DAOServices;
+import br.edu.uepb.services.Services;
 
 @Controller
 public class MidiaEletronicaController {
 	
 	@Autowired
-	private DAOServices<MidiaEletronica> midiaServices;
+	private Services<MidiaEletronica> midiaServices;
 	
 	@RequestMapping("/midia")
 	public ModelAndView midia(MidiaEletronica midia) {

@@ -2,67 +2,67 @@ package br.edu.uepb.dao;
 
 import java.util.List;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import br.edu.uepb.model.Revista;
 
+@Repository
 public class RevistaDAOImpl implements DAO<Revista> {
+	private static final Logger logger = LogManager.getLogger(RevistaDAOImpl.class);
+	
+	@Autowired
 	private SessionFactory sessionFactory;
 
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
-	public Revista adiciona(Revista obj) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		session.persist(obj);
-		tx.commit();
-		session.close();
-		return obj;
-	}
-
-	public Revista edita(Revista obj) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		session.update(obj);
-		tx.commit();
-		session.close();
-		return obj;
-	}
-
-	public boolean deleta(int objId) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		Revista r = (Revista) session.load(Revista.class, new Integer(objId));
-		if(r != null) {
-			session.delete(r);
+	public void adiciona(Revista obj) {
+		if(obj != null) {
+			sessionFactory.getCurrentSession().save(obj);
+			logger.info("Objeto salvo com sucesso!");
+		}else {
+			logger.info("Objeto nulo!");
 		}
-		tx.commit();
-		session.close();
-		return true;
+	}
+
+	public void edita(Revista obj) {
+		if(obj != null) {
+			sessionFactory.getCurrentSession().update(obj);
+			logger.info("Objeto salvo com sucesso!");
+		}else {
+			logger.info("Objeto nulo!");
+		}
+	}
+
+	public void deleta(int objId) {
+		Session session = sessionFactory.getCurrentSession();
+		Revista r = (Revista) session.load(Revista.class, new Integer(objId));
+		if(null != r) {
+			session.delete(r);
+			logger.info("objeto deletado com sucesso!");
+		}else {
+			logger.info("objeto não encotrado!");
+		}
 	}
 
 	public Revista getObj(int objId) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
+		Session session = sessionFactory.getCurrentSession();
 		Revista r = (Revista) session.load(Revista.class, new Integer(objId));
-		tx.commit();
-		session.close();
-		return r;
+		if(null != r) {
+			logger.info("objeto encontrado com sucesso!");
+			return r;
+		}else {
+			logger.info("objeto não encotrado!");
+			return r;
+		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Revista> getAllObj() {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		List<Revista> list = session.createQuery("From Revistas").list();
-		tx.commit();
-		session.close();
-		return list;
+		List<Revista> revistaList = sessionFactory.getCurrentSession().createQuery("from Revista").list();
+		logger.info("Revistas encontradas");
+		return revistaList;
 	}
 
 }

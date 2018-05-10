@@ -1,29 +1,92 @@
 package br.edu.uepb.model;
 
-import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="usuario")
-@Inheritance(strategy=InheritanceType.JOINED)
-@DiscriminatorColumn(name="TYPE")
+@Table(name="usuarios")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Usuario {
+	
+	@Id
+	@GeneratedValue
+	@Column(name="USUARIOID")
+	private int usuarioId;
+	
+	@Column(name="CPF")
 	private int cpf;
+	
+	@Column(name="NOME")
 	private String nome;
+	
+	@Column(name="RG")
 	private int rg;
+	
+	@Column(name="NATURALIDADE")
 	private String naturalidade;
+	
+	@Column(name="ENDERECO")
 	private String endereco;
-	private String tel;
+	
+	@Column(name="TELEFONE")
+	private String telefone;
+	
+	@Column(name="email")
 	private String email;
+	
+	@Column(name="LOGIN")
 	private String login;
+	
+	@Column(name="SENHA")
 	private String senha;
 	
 	public Usuario() {}
 
-	public Usuario(int cpf, String nome, int rg, String naturalidade, String endereco, String tel, String email,
+	/**
+	 * 
+	 * @param usuarioId
+	 * @param cpf
+	 * @param nome
+	 * @param rg
+	 * @param naturalidade
+	 * @param endereco
+	 * @param telefone
+	 * @param email
+	 * @param login
+	 * @param senha
+	 */
+	public Usuario(int usuarioId, int cpf, String nome, int rg, String naturalidade, String endereco, String telefone,
+			String email, String login, String senha) {
+		super();
+		this.usuarioId = usuarioId;
+		this.cpf = cpf;
+		this.nome = nome;
+		this.rg = rg;
+		this.naturalidade = naturalidade;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.email = email;
+		this.login = login;
+		this.senha = senha;
+	}
+
+	/**
+	 * @param cpf
+	 * @param nome
+	 * @param rg
+	 * @param naturalidade
+	 * @param endereco
+	 * @param telefone
+	 * @param email
+	 * @param login
+	 * @param senha
+	 */
+	public Usuario(int cpf, String nome, int rg, String naturalidade, String endereco, String telefone, String email,
 			String login, String senha) {
 		super();
 		this.cpf = cpf;
@@ -31,10 +94,18 @@ public abstract class Usuario {
 		this.rg = rg;
 		this.naturalidade = naturalidade;
 		this.endereco = endereco;
-		this.tel = tel;
+		this.telefone = telefone;
 		this.email = email;
 		this.login = login;
 		this.senha = senha;
+	}
+
+	public int getUsuarioId() {
+		return usuarioId;
+	}
+
+	public void setUsuarioId(int usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 
 	public int getCpf() {
@@ -77,12 +148,12 @@ public abstract class Usuario {
 		this.endereco = endereco;
 	}
 
-	public String getTel() {
-		return tel;
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public String getEmail() {
@@ -108,5 +179,8 @@ public abstract class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	
+	
 
 }

@@ -1,0 +1,6 @@
+br.edu.uepb.controller
+br.edu.uepb.dao
+br.edu.uepb.enums
+br.edu.uepb.exceptions
+br.edu.uepb.model
+br.edu.uepb.services

@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.uepb.model.Revista;
-import br.edu.uepb.services.DAOServices;
+import br.edu.uepb.services.Services;
 
 @Controller
 public class RevistaController {
 	
 	@Autowired
-	private DAOServices<Revista> revistaServices;
+	private Services<Revista> revistaServices;
 	
 	@RequestMapping("/revista")
 	public ModelAndView revista(Revista r) {

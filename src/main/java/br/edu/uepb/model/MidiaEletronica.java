@@ -20,7 +20,7 @@ import br.edu.uepb.enums.MidiaEletronicaEnum;
 @Table(name = "midiaseletronicas")
 public class MidiaEletronica {
 	@Id
-	@Column
+	@Column(name="MIDIAID")
 	@GeneratedValue
 	private int midiaID;
 	

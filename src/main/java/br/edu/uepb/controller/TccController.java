@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.uepb.model.Tcc;
-import br.edu.uepb.services.DAOServices;
+import br.edu.uepb.services.Services;
 
 @Controller
 public class TccController {
 	
 	@Autowired
-	private DAOServices<Tcc> tccServices;
+	private Services<Tcc> tccServices;
 	
 	@RequestMapping("/tcc")
 	public ModelAndView tcc(Tcc tcc) {

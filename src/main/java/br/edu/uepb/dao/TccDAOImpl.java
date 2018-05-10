@@ -2,66 +2,68 @@ package br.edu.uepb.dao;
 
 import java.util.List;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import br.edu.uepb.model.Tcc;
 
+@Repository
 public class TccDAOImpl implements DAO<Tcc> {
+	private static final Logger logger = LogManager.getLogger(TccDAOImpl.class);
+	
+	@Autowired
 	private SessionFactory sessionFactory;
 
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
-	public Tcc adiciona(Tcc obj) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		session.persist(obj);
-		tx.commit();
-		session.close();
-		return obj;
-	}
-
-	public Tcc edita(Tcc obj) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		session.update(obj);
-		tx.commit();
-		session.close();
-		return obj;
-	}
-
-	public boolean deleta(int objId) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		Tcc t = (Tcc) session.load(Tcc.class, new Integer(objId));
-		if(t != null) {
-			session.delete(t);
+	public void adiciona(Tcc obj) {
+		if(obj != null) {
+			sessionFactory.getCurrentSession().save(obj);
+			logger.info("Objeto salvo com sucesso!");
+		}else {
+			logger.error("Objeto nulo!");
 		}
-		tx.commit();
-		session.close();
-		return true;
+	}
+
+	public void edita(Tcc obj) {
+		if(obj != null) {
+			sessionFactory.getCurrentSession().update(obj);
+			logger.info("Objeto editado com sucesso!");
+		}else {
+			logger.error("Objeto nulo!");
+		}
+	}
+
+	public void deleta(int objId) {
+		Session session = sessionFactory.getCurrentSession();
+		Tcc tcc = (Tcc) session.load(Tcc.class, new Integer(objId));
+		if(null != tcc) {
+			session.delete(tcc);
+			logger.info("objeto deletado com sucesso!");
+		}else {
+			logger.info("objeto não encotrado!");
+		}
 	}
 
 	public Tcc getObj(int objId) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		Tcc t = (Tcc) session.load(Tcc.class, new Integer(objId));
-		tx.commit();
-		session.close();
-		return t;
+		Session session = sessionFactory.getCurrentSession();
+		Tcc tcc = (Tcc) session.load(Tcc.class, new Integer(objId));
+		if(null != tcc) {
+			logger.info("objeto deletado com sucesso!");
+			return tcc;
+		}else {
+			logger.info("objeto não encotrado!");
+			return tcc;
+		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Tcc> getAllObj() {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		List<Tcc> list = session.createQuery("From Tcc").list();
-		tx.commit();
-		session.close();
-		return list;
+		List<Tcc> tccList = sessionFactory.getCurrentSession().createQuery("from Tcc").list();
+		return tccList;
 	}
 
 }

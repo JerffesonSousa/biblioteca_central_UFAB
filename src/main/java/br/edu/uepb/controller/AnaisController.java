@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.uepb.model.Anais;
-import br.edu.uepb.services.DAOServices;
+import br.edu.uepb.services.Services;
 
 @Controller
 public class AnaisController{
 	
 	@Autowired
-	private DAOServices<Anais> anaiServices;
+	private Services<Anais> anaiServices;
 	
 	@RequestMapping("/anais")
 	public ModelAndView anais(Anais a) {

@@ -23,11 +23,23 @@ public class Tcc {
 	@Column
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int tccID;
+	
+	@Column(name="TITULO")
 	private String titulo;
+	
+	@Column(name="AUTOR")
 	private String autor;
+	
+	@Column(name="ORIENTADOR")
 	private String orientador;
+	
+	@Column(name="TIPO")
 	private TccEnum tipo;
+	
+	@Column(name="DATADEFESA")
 	private Date dataDefesa;
+	
+	@Column(name="LOCAL")
 	private String local;
 	
 	public Tcc() {}

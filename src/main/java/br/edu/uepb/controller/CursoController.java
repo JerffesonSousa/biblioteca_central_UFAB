@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.uepb.model.Curso;
-import br.edu.uepb.services.DAOServices;
+import br.edu.uepb.services.Services;
 
 @Controller
 public class CursoController {
 	
 	@Autowired
-	private DAOServices<Curso> cursoServices;
+	private Services<Curso> cursoServices;
 	
 	@RequestMapping("/curso")
 	public ModelAndView anais(Curso c) {

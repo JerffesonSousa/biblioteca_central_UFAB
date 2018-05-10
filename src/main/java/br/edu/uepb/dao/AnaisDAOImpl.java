@@ -4,77 +4,69 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import br.edu.uepb.exceptions.DAOException;
 import br.edu.uepb.model.Anais;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
+@Repository
 public class AnaisDAOImpl implements DAO<Anais> {
-	
+
+	private static final Logger logger = LogManager.getLogger(AnaisDAOImpl.class);
+
+	@Autowired
 	private SessionFactory sessionFactory;
 
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
-	public Anais adiciona(Anais obj) {
+	public void adiciona(Anais obj) {
 		if (obj != null) {
-			Session session = this.sessionFactory.openSession();
-			Transaction tx = session.beginTransaction();
-			session.persist(obj);
-			tx.commit();
-			session.close();
-			return obj;
+			sessionFactory.getCurrentSession().save(obj);
+			logger.info("objeto salvo com sucesso!");
 		} else {
-			throw new DAOException("Erro ao inserir");
+			logger.error("Objeto nulo");
 		}
 	}
 
-	public Anais edita(Anais obj) {
+	public void edita(Anais obj) {
 		if (obj != null) {
-			Session session = this.sessionFactory.openSession();
-			Transaction tx = session.beginTransaction();
-			session.update(obj);
-			tx.commit();
-			session.close();
-			return obj;
+			sessionFactory.getCurrentSession().update(obj);
+			logger.info("objeto editado com sucesso!");
 		} else {
-			throw new DAOException("Erro ao editar");
+			logger.error("Objeto nulo");
 		}
 	}
 
-	public boolean deleta(int objId) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
+	public void deleta(int objId) {
+		Session session = sessionFactory.getCurrentSession();
 		Anais a = (Anais) session.load(Anais.class, new Integer(objId));
-		if (a != null) {
+		if (null != a) {
 			session.delete(a);
-			tx.commit();
-			session.close();
-			return true;
+			logger.info("objeto deletado com sucesso!");
 		} else {
-			return false;
+			logger.info("objeto não encotrado!");
 		}
-
 	}
 
 	public Anais getObj(int objId) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
+		Session session = sessionFactory.getCurrentSession();
 		Anais a = (Anais) session.load(Anais.class, new Integer(objId));
-		tx.commit();
-		session.close();
-		return a;
+		if (null != a) {
+			logger.info("objeto encontrado!");
+			return a;
+		} else {
+			logger.info("objeto não encotrado!");
+			return a;
+		}
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Anais> getAllObj() {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		List<Anais> list = session.createQuery("From Anais").list();
-		tx.commit();
-		session.close();
-		return list;
+		List<Anais> anaisList = sessionFactory.getCurrentSession().createQuery("from Anais").list();
+		logger.info("Anais encontrados");
+		return anaisList;
 	}
 
 }

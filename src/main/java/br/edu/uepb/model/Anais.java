@@ -1,13 +1,17 @@
 package br.edu.uepb.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import br.edu.uepb.enums.AnaisEnum;
 
@@ -24,6 +28,7 @@ public class Anais {
 	private int anaisID;
 	
 	@Column(name="TIPO")
+	@Enumerated(EnumType.STRING)
 	private AnaisEnum tipo;
 	
 	@Column(name="TITULO")
@@ -35,8 +40,9 @@ public class Anais {
 	@Column(name="CONGRESSO")
 	private String congresso;
 	
+	@DateTimeFormat
 	@Column(name="ANODEPUBLICACAO")
-	private Date anoDePublicacao;
+	private LocalDateTime anoDePublicacao;
 	
 	@Column(name="LOCAL")
 	private String local;
@@ -51,7 +57,7 @@ public class Anais {
 	 * @param anaDePublicacao um objeto tipo Date que indica o ano da publicação dos Anais
 	 * @param local uma string para identificar o local que foi realizado
 	 * */
-	public Anais(AnaisEnum tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicacao, String local) {
+	public Anais(AnaisEnum tipo, String titulo, String autores, String nomeCongresso, LocalDateTime anoDePublicacao, String local) {
 		super();
 		this.tipo = tipo;
 		this.titulo = titulo;
@@ -70,7 +76,7 @@ public class Anais {
 	 * @param anaDePublicacao um objeto tipo Date que indica o ano da publicação dos Anais
 	 * @param local uma string para identificar o local que foi realizado
 	 * */
-	public Anais(int anaisID, AnaisEnum tipo, String titulo, String autores, String nomeCongresso, Date anoDePublicacao, String local) {
+	public Anais(int anaisID, AnaisEnum tipo, String titulo, String autores, String nomeCongresso, LocalDateTime anoDePublicacao, String local) {
 		super();
 		this.anaisID = anaisID;
 		this.tipo = tipo;
@@ -81,20 +87,22 @@ public class Anais {
 		this.local = local;
 	}
 	
+	
+	
 	public int getAnaisID() {
 		return anaisID;
 	}
 
-	public void setAnaisID(int anaisID) {
-		this.anaisID = anaisID;
-	}
-
-	public Date getAnoDePublicacao() {
+	public LocalDateTime getAnoDePublicacao() {
 		return anoDePublicacao;
 	}
 
-	public void setAnoDePublicacao(Date anoDePublicacao) {
+	public void setAnoDePublicacao(LocalDateTime anoDePublicacao) {
 		this.anoDePublicacao = anoDePublicacao;
+	}
+
+	public void setAnaisID(int anaisID) {
+		this.anaisID = anaisID;
 	}
 
 	public AnaisEnum getTipo() {
@@ -121,20 +129,12 @@ public class Anais {
 		this.autores = autores;
 	}
 
-	public String getNomeCongresso() {
+	public String getCongresso() {
 		return congresso;
 	}
 
-	public void setNomeCongresso(String nomeCongresso) {
-		this.congresso = nomeCongresso;
-	}
-
-	public Date getAnoDePublicao() {
-		return anoDePublicacao;
-	}
-
-	public void setAnoDePublicao(Date anoDePublicao) {
-		this.anoDePublicacao = anoDePublicao;
+	public void setCongresso(String congresso) {
+		this.congresso = congresso;
 	}
 
 	public String getLocal() {
